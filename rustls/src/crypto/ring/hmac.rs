@@ -6,14 +6,14 @@ use super::ring_like;
 use crate::crypto;
 
 #[cfg(feature = "tls12")]
-pub(crate) static HMAC_SHA256: Hmac = Hmac(&ring_like::hmac::HMAC_SHA256);
+pub static HMAC_SHA256: Hmac = Hmac(&ring_like::hmac::HMAC_SHA256);
 #[cfg(feature = "tls12")]
-pub(crate) static HMAC_SHA384: Hmac = Hmac(&ring_like::hmac::HMAC_SHA384);
+pub static HMAC_SHA384: Hmac = Hmac(&ring_like::hmac::HMAC_SHA384);
 #[cfg(test)]
 #[allow(dead_code)] // only for TLS1.2 prf test
-pub(crate) static HMAC_SHA512: Hmac = Hmac(&ring_like::hmac::HMAC_SHA512);
+pub static HMAC_SHA512: Hmac = Hmac(&ring_like::hmac::HMAC_SHA512);
 
-pub(crate) struct Hmac(&'static ring_like::hmac::Algorithm);
+pub struct Hmac(&'static ring_like::hmac::Algorithm);
 
 impl crypto::hmac::Hmac for Hmac {
     fn with_key(&self, key: &[u8]) -> Box<dyn crypto::hmac::Key> {

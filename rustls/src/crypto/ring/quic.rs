@@ -7,7 +7,7 @@ use crate::crypto::cipher::{AeadKey, Iv, Nonce};
 use crate::error::Error;
 use crate::quic;
 
-pub(crate) struct HeaderProtectionKey(aead::quic::HeaderProtectionKey);
+pub struct HeaderProtectionKey(aead::quic::HeaderProtectionKey);
 
 impl HeaderProtectionKey {
     pub(crate) fn new(key: AeadKey, alg: &'static aead::quic::Algorithm) -> Self {

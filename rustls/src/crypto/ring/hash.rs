@@ -6,10 +6,10 @@ use super::ring_like::digest;
 use crate::crypto;
 use crate::msgs::enums::HashAlgorithm;
 
-pub(crate) static SHA256: Hash = Hash(&digest::SHA256, HashAlgorithm::SHA256);
-pub(crate) static SHA384: Hash = Hash(&digest::SHA384, HashAlgorithm::SHA384);
+pub static SHA256: Hash = Hash(&digest::SHA256, HashAlgorithm::SHA256);
+pub static SHA384: Hash = Hash(&digest::SHA384, HashAlgorithm::SHA384);
 
-pub(crate) struct Hash(&'static digest::Algorithm, HashAlgorithm);
+pub struct Hash(&'static digest::Algorithm, HashAlgorithm);
 
 impl crypto::hash::Hash for Hash {
     fn start(&self) -> Box<dyn crypto::hash::Context> {

@@ -1,7 +1,7 @@
 use alloc::sync::Arc;
 
 use pki_types::PrivateKeyDer;
-pub(crate) use ring as ring_like;
+pub use ring as ring_like;
 use webpki::ring as webpki_algs;
 
 use crate::crypto::{CryptoProvider, KeyProvider, SecureRandom};
@@ -15,15 +15,15 @@ use crate::Error;
 /// Using software keys for authentication.
 pub mod sign;
 
-pub(crate) mod hash;
-pub(crate) mod hmac;
-pub(crate) mod kx;
-pub(crate) mod quic;
+pub mod hash;
+pub mod hmac;
+pub mod kx;
+pub mod quic;
 #[cfg(feature = "std")]
-pub(crate) mod ticketer;
+pub mod ticketer;
 #[cfg(feature = "tls12")]
-pub(crate) mod tls12;
-pub(crate) mod tls13;
+pub mod tls12;
+pub mod tls13;
 
 /// A `CryptoProvider` backed by the [*ring*] crate.
 ///
